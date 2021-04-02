@@ -1,0 +1,32 @@
+.search-area{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card-container {
+    text-align: start !important;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.card-title {
+    font-weight:900;
+    color: black;
+    font-size: medium;
+}
+
+.card-writers{
+    font-size: medium;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.card{
+    border-bottom: 1px solid rgb(31, 30, 30);
+    margin-bottom: 10px;
+}
+
+// :nth-last-of-type(1) .card {
+//     border-bottom: 0px;
+//     margin-bottom: 0px;
+// }

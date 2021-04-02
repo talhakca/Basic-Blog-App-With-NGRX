@@ -1,0 +1,50 @@
+::ng-deep .am-navbar{
+    min-height:65px;
+}
+
+::ng-deep .my-drawer {
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  ::ng-deep .my-drawer .am-drawer-sidebar {
+    background-color: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  ::ng-deep .my-drawer .am-drawer-sidebar .am-list {
+    width: 300px;
+    padding: 0;
+  }
+
+  ::ng-deep .am-drawer-sidebar{
+      width:70px;
+  }
+
+  ::ng-deep .am-drawer-draghandle{
+visibility: hidden;
+  }
+
+  .list-item{
+      display: flex;
+      justify-content: center;
+      max-width: 40px;
+  }
+
+  .story-line{
+    overflow: hidden;
+    height: 60px;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+
+  .story{
+    display: inline-block;
+    margin-right: 15px;
+  }
+
+  .story-line::-webkit-scrollbar {
+    display: none;
+  }

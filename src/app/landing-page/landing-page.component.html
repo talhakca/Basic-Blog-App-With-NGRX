@@ -1,0 +1,15 @@
+<WingBlank>
+    <Carousel [infinite]="true"
+              [vertical]="false"
+              [selectedIndex]="0"
+              (beforeChange)="beforeChange($event)"
+              (afterChange)="afterChange($event)">
+        <CarouselSlide *ngFor="let imagePath of carouselImagePaths">
+            <div style="display: inline-block; width: 100%;"
+                 [ngStyle]="{ height: '184px' }">
+                <img [src]="imagePath.path"
+                     style=" pointer-events: none; width: 100%;" />
+            </div>
+        </CarouselSlide>
+    </Carousel>
+</WingBlank>

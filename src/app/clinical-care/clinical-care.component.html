@@ -1,0 +1,19 @@
+<div class="search-area">
+    <TextareaItem [rows]="1"
+                  [placeholder]="'Search through guidelines'"
+                  (onChange)="onGuideSearch($event)"> </TextareaItem>
+</div>
+
+<div class="card-container">
+    <ng-container *ngFor="let guide of displayedGuidelines">
+        <div class="card"
+             (click)="onGuideSelect(guide)">
+            <div class="card-title">
+                {{guide?.title}}
+            </div>
+            <div class="card-writers">
+                {{ guide?.writers }}
+            </div>
+        </div>
+    </ng-container>
+</div>

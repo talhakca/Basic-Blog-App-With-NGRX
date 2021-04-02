@@ -1,0 +1,43 @@
+<div class="clinical-care-detail-container">
+    <div class="title">
+        {{ guideline.title}}
+    </div>
+    <div class="writers">
+        {{ guideline.writers}}
+    </div>
+    <div class="content">
+        <span [innerHTML]="guideline.content"></span>
+    </div>
+    <div class="icons">
+        <div class="icon-container">
+            <div class="icon">
+                <i class="far fa-eye"></i>
+            </div>
+            <div class="icon">
+                <div class="text">
+                    View Chapter
+                </div>
+            </div>
+        </div>
+        <div class="icon-container">
+            <div class="icon">
+                <i class="fas fa-download"></i>
+            </div>
+            <div class="icon">
+                <div class="text">
+                    Download Chapter
+                </div>
+            </div>
+        </div>
+        <div class="icon-container">
+            <div class="icon">
+                <i class="fas fa-download"></i>
+            </div>
+            <div class="icon">
+                <div class="text">
+                    Add to favorites
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
