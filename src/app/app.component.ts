@@ -12,7 +12,7 @@ export class AppComponent {
   sidebarData = [
     {
       icon: 'fas fa-home',
-      redirectUrl: ''
+      redirectUrl: 'home'
     },
     {
       icon: 'far fa-file-alt',
@@ -52,4 +52,8 @@ export class AppComponent {
   state = {
     open: false
   };
+
+  isAuthenticated() {
+    return localStorage.getItem('isAuthenticated') === 'true';
+  }
 }

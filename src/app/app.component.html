@@ -5,7 +5,8 @@
 </Navbar>
 
 <ng-template #menuIconTmpl>
-  <i class="fas fa-bars"></i>
+  <i *ngIf="isAuthenticated()"
+     class="fas fa-bars"></i>
 </ng-template>
 
 <ng-template #rightContent>
@@ -19,10 +20,15 @@
         [dragToggleDistance]="dragToggleDistance"
         [open]="this.state.open"
         (onOpenChange)="onOpenChange()">
-  <div class="story-line">
+  <div *ngIf="isAuthenticated()"
+       class="story-line">
     <div *ngFor="let i of [1,2,3,4,6,7,6,6,6,6,6,6,6,6,6,66]"
-         class="story">
-      aaaaaaaaaaaaa
+         class="story-item">
+      <div class="story">
+      </div>
+      <div class="story-title">
+        title {{ i }}
+      </div>
     </div>
   </div>
   <router-outlet></router-outlet>

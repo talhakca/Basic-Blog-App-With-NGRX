@@ -12,21 +12,30 @@ import { ClinicalCareComponent } from './clinical-care/clinical-care.component';
 import { Router, RouterModule, RouterOutlet, Routes } from '@angular/router';
 import { ClinicalCareDetailComponent } from './clinical-care-detail/clinical-care-detail.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AuthenticatedGuard } from './authenticated.guard';
 
 registerLocaleData(en);
 
 const routes: Routes = [
   {
-    path: '',
-    component: LandingPageComponent
+    path: 'home',
+    component: LandingPageComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: 'clinical-care',
-    component: ClinicalCareComponent
+    component: ClinicalCareComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: 'clinical-care-detail/:id',
-    component: ClinicalCareDetailComponent
+    component: ClinicalCareDetailComponent,
+    canActivate: [AuthenticatedGuard]
+  },
+  {
+    path: '',
+    component: LoginPageComponent
   }
 ]
 
@@ -35,7 +44,8 @@ const routes: Routes = [
     AppComponent,
     ClinicalCareComponent,
     ClinicalCareDetailComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

@@ -35,16 +35,38 @@ visibility: hidden;
 
   .story-line{
     overflow: hidden;
-    height: 60px;
+    height: 80px;
     white-space: nowrap;
     overflow-x: auto;
+    margin-bottom: 20px;
   }
 
   .story{
-    display: inline-block;
     margin-right: 15px;
+    border: 3px solid yellow;
+    border-radius: 50%;
+    background-color: rgb(57, 57, 223);
+    height: 60px;
+    width: 60px;
   }
 
   .story-line::-webkit-scrollbar {
     display: none;
   }
+
+  .story-title {
+    text-align: center;
+    width: 90%;
+  }
+
+  .story-item {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    white-space:normal !important;
+  }
+
+::ng-deep .am-drawer-content {
+  padding-top: 0px !important;
+  margin-top: 15px;
+}

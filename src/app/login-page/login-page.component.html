@@ -1,0 +1,120 @@
+<div class="form">
+    <!-- AGE -->
+    <div class="label">
+        Age
+    </div>
+    <div class="form-item am-button stepper">
+        <Stepper [(ngModel)]="formValue.age"
+                 [min]="1"
+                 [max]="168"
+                 [showNumber]="true"></Stepper>
+    </div>
+
+    <!-- GENDER-->
+    <div class="label">
+        Gender
+    </div>
+    <div class="form-item">
+        <div Button
+             (click)="showPicker()">{{ genderName }}</div>
+    </div>
+
+    <!-- COUNTRY -->
+    <div class="label">
+        Country
+    </div>
+    <div class="form-item">
+        <List>
+            <RadioItemGroup [(ngModel)]="country.value"
+                            (onChange)="onCountryChange($event)">
+                <RadioItem *ngFor="let country of countryOptions"
+                           [name]="country.name"
+                           [value]="country.value">
+                    {{ country.name }}
+                </RadioItem>
+            </RadioItemGroup>
+        </List>
+    </div>
+
+    <!-- LEVEL OF DIABETES EXPERTISE -->
+    <div class="label">
+        Level of Diabetes Expertise
+    </div>
+    <div class="form-item">
+        <div Button
+             (click)="showLODEPicker()">{{ levelOfDEName }}</div>
+    </div>
+
+    <!-- SAVE BUTTON -->
+    <div class="button-area">
+        <div class="button"
+             Button
+             [type]="'primary'"
+             (click)="onFormSave()">Save</div>
+        <div class="button"
+             Button
+             [type]="'warning'"
+             (onClick)="onClose()">Cancel</div>
+    </div>
+</div>
+
+
+
+<!-- MODAL AREA -->
+<Modal [(ngModel)]="specialistModalVisible"
+       [popup]="true"
+       [animationType]="'slide-up'"
+       (onClose)="onClose()">
+    <List [renderHeader]="'Enter Specialist Details'"
+          [className]="'popup-list'">
+        <ng-container *ngIf="formValue.levelOfDE === 'Specialist'; else nonSpecTemp">
+            <ListItem Picker
+                      [extra]="specialistTypeValue"
+                      okText="Save"
+                      dismissText="Cancel"
+                      [arrow]="'horizontal'"
+                      [data]="specialistTypeOptions"
+                      [(ngModel)]="specialistTypeValue"
+                      (ngModelChange)="onSpecialistTypeSelect()">
+                <div class="specialist-type">
+                    Specialist Type
+                </div>
+            </ListItem>
+        </ng-container>
+        <ng-template #nonSpecTemp>
+            <ListItem Picker
+                      [extra]="nonSpecialistTypeValue"
+                      okText="Save"
+                      dismissText="Cancel"
+                      [arrow]="'horizontal'"
+                      [data]="nonSpecialistTypeOptions"
+                      [(ngModel)]="nonSpecialistTypeValue"
+                      (ngModelChange)="onNonSpecialistTypeSelect()">
+                <div class="specialist-type">
+                    Non-Specialist Type
+                </div>
+            </ListItem>
+        </ng-template>
+        <ListItem>
+            <InputItem [type]="'money'"
+                       [clear]="true"
+                       [placeholder]="'years'"
+                       [(ngModel)]="formValue.yearsOfExperience"
+                       [content]="'Experience'"></InputItem>
+        </ListItem>
+        <ListItem>
+            <InputItem [type]="'money'"
+                       [clear]="true"
+                       [placeholder]="'Number Of Diabetes Patients'"
+                       [(ngModel)]="formValue.numberOfDiabetePatients"
+                       [locale]="confirmLabel"
+                       [content]="'Patients'"></InputItem>
+        </ListItem>
+        <ListItem>
+            <div Button
+                 [type]="'primary'"
+                 (onClick)="onClose()">Save</div>
+
+        </ListItem>
+    </List>
+</Modal>
