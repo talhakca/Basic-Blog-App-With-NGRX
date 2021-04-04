@@ -24,6 +24,7 @@ export class FavoritesComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
     this.getFavorites();
   }
 
@@ -38,9 +39,12 @@ export class FavoritesComponent implements OnInit, AfterViewInit {
       this.http.get('https://bau-ispad-default-rtdb.firebaseio.com/favorites.json').subscribe((res: any) => {
         const favoriteIds: any[] = [];
         for (const key in res) {
-          favoriteIds.push(res[key].favoritedGuideId)
+          if (res[key].userId === localStorage.getItem('userId')) {
+            favoriteIds.push(res[key].favoritedGuideId)
+          }
         }
         this.guides = this.guideService.getGuidelines().filter(item => favoriteIds.includes(item.id));
+        console.log(this.guides);
       });
     }
   }

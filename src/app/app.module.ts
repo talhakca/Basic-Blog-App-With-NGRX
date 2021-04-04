@@ -20,6 +20,8 @@ import { UnderResourcedCountriesComponent } from './under-resourced-countries/un
 import { UsefulLinksComponent } from './useful-links/useful-links.component';
 import { ELearningComponent } from './e-learning/e-learning.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { SplashComponent } from './splash/splash.component';
+import { SplashGuard } from './splash.guard';
 
 registerLocaleData(en);
 
@@ -27,45 +29,56 @@ const routes: Routes = [
   {
     path: 'home',
     component: LandingPageComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'clinical-care',
     component: ClinicalCareComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'clinical-care-detail/:id',
     component: ClinicalCareDetailComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: '',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate: [SplashGuard]
   },
   {
     path: 'hot-topics',
-    component: HotTopicsComponent
+    component: HotTopicsComponent,
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'diabetes-teaching-toolkit',
-    component: DiabetesTeachingToolkitComponent
+    component: DiabetesTeachingToolkitComponent,
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'under-resourced-countries',
-    component: UnderResourcedCountriesComponent
+    component: UnderResourcedCountriesComponent,
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'useful-links',
-    component: UsefulLinksComponent
+    component: UsefulLinksComponent,
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'e-learning',
-    component: ELearningComponent
+    component: ELearningComponent,
+    canActivate: [AuthenticatedGuard, SplashGuard]
   },
   {
     path: 'favorites',
-    component: FavoritesComponent
+    component: FavoritesComponent,
+    canActivate: [AuthenticatedGuard, SplashGuard]
+  },
+  {
+    path: 'splash',
+    component: SplashComponent
   }
 ]
 
@@ -81,7 +94,8 @@ const routes: Routes = [
     UnderResourcedCountriesComponent,
     UsefulLinksComponent,
     ELearningComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,

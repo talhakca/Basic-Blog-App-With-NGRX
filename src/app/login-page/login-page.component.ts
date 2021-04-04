@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocaleProviderService, PickerRef, PickerService, RadioStatus } from 'ng-zorro-antd-mobile';
 import { en_US } from 'ng-zorro-antd-mobile';
+import * as uuid from 'uuid';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -117,7 +118,12 @@ export class LoginPageComponent implements OnInit {
 
   onFormSave() {
     localStorage.setItem('isAuthenticated', 'true');
-    this.router.navigateByUrl('home')
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.router.navigateByUrl('home')
+    } else {
+      localStorage.setItem('userId', uuid.v4());
+    }
   }
 
   genderSelect() {

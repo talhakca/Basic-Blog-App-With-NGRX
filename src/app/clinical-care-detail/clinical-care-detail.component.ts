@@ -35,8 +35,11 @@ export class ClinicalCareDetailComponent implements OnInit {
   }
 
   addToFavorites() {
-    const postBody = { userId: 1, favoritedGuideId: this.guideId }
-    this.http.post('https://bau-ispad-default-rtdb.firebaseio.com/favorites.json', postBody).subscribe(res => console.log(res))
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      const postBody = { userId: userId, favoritedGuideId: this.guideId }
+      this.http.post('https://bau-ispad-default-rtdb.firebaseio.com/favorites.json', postBody).subscribe(res => console.log(res))
+    }
   }
 
 }

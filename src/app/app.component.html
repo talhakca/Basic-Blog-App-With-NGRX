@@ -1,4 +1,5 @@
-<Navbar [leftContent]="menuIconTmpl"
+<Navbar *ngIf="!isFirstOpen"
+        [leftContent]="menuIconTmpl"
         [rightContent]="rightContent"
         (onLeftClick)="onOpenChange()">
   {{getTitle()}}

@@ -11,7 +11,7 @@ import { TitleService } from 'src/services/title-service/title.service';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'bau-ispad';
   dragToggleDistance = 5;
-
+  isFirstOpen = true;
   storyVisible = false;
 
   menuData = [
@@ -90,6 +90,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.setStoryVisible();
+    this.isFirstOpen = localStorage.getItem('isFirstOpen') !== 'false';
   }
 
   ngAfterViewInit(): void {
