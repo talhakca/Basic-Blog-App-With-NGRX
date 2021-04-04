@@ -19,8 +19,8 @@
     padding: 0;
   }
 
-  ::ng-deep .am-drawer-sidebar{
-      width:70px;
+  ::ng-deep .am-flexbox-item{
+     width:195px;
   }
 
   ::ng-deep .am-drawer-draghandle{
@@ -35,19 +35,20 @@ visibility: hidden;
 
   .story-line{
     overflow: hidden;
-    height: 80px;
+    height: 100px;
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
     overflow-x: auto;
     margin-bottom: 20px;
   }
 
   .story{
-    margin-right: 15px;
-    border: 3px solid yellow;
+    border: 5px solid #F0ED8E;
     border-radius: 50%;
-    background-color: rgb(57, 57, 223);
-    height: 60px;
-    width: 60px;
+    background-color: #A1DAF7;
+    height: 60px !important;
+    width: 60px !important;
   }
 
   .story-line::-webkit-scrollbar {
@@ -55,18 +56,71 @@ visibility: hidden;
   }
 
   .story-title {
+    width: 100%;
     text-align: center;
-    width: 90%;
   }
 
   .story-item {
-    width: 20%;
-    display: inline-block;
-    text-align: center;
+    width: calc(30%);
+    display: flex;
+    flex-direction: column;
     white-space:normal !important;
+    align-items: center;
   }
 
 ::ng-deep .am-drawer-content {
   padding-top: 0px !important;
   margin-top: 15px;
+}
+
+.sidebar-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #9FDAF8 !important;
+  color: #fff;
+}
+
+::ng-deep .am-navbar{
+  background-color: #9FDAF8;
+  color: #fff;
+}
+
+:host::ng-deep .am-drawer-sidebar {
+  background-color: #9FDAF8 !important;
+  color: #fff;
+}
+
+::ng-deep .am-accordion-content{
+  background-color: #9FDAF8 !important;
+  color: #fff;
+}
+::ng-deep .am-accordion-item{
+  background-color: #9FDAF8 !important;
+  color: #fff;
+}
+
+.lower-sidebar{
+  margin-bottom: 30%;
+}
+
+ListItem {
+  background-color: #9FDAF8 !important;
+  color: #fff;
+  width: 100%;
+}
+
+::ng-deep .am-accordion-header {
+  background-color: #9FDAF8 !important;
+  color: #fff !important;
+}
+
+::ng-deep .am-accordion .am-accordion-item .am-accordion-header {
+  background-color: #9FDAF8 !important;
+  color: #fff !important;
+}
+
+::ng-deep .arrow {
+  color: #fff;
 }

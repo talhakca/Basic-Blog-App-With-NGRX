@@ -1,33 +1,33 @@
 <Navbar [leftContent]="menuIconTmpl"
         [rightContent]="rightContent"
         (onLeftClick)="onOpenChange()">
-  ISPAD
+  {{getTitle()}}
 </Navbar>
 
 <ng-template #menuIconTmpl>
   <i *ngIf="isAuthenticated()"
-     class="fas fa-bars"></i>
+     class="fas fa-bars text-white"></i>
 </ng-template>
 
 <ng-template #rightContent>
   <i class="fas fa-cog"></i>
 </ng-template>
 <Drawer class="my-drawer"
-        [ngStyle]="{ minHeight: this.height + 'px' }"
-        [contentStyle]="{ color: '#A6A6A6', textAlign: 'center', paddingTop: '42px' }"
+        [ngStyle]="{ minHeight: height + 'px' }"
+        [contentStyle]="{ color: '#A6A6A6'}"
         [enableDragHandle]="true"
         [sidebar]="sidebar"
         [dragToggleDistance]="dragToggleDistance"
-        [open]="this.state.open"
+        [open]="state.open"
         (onOpenChange)="onOpenChange()">
-  <div *ngIf="isAuthenticated()"
+  <div *ngIf="isAuthenticated() && storyVisible"
        class="story-line">
-    <div *ngFor="let i of [1,2,3,4,6,7,6,6,6,6,6,6,6,6,6,66]"
+    <div *ngFor="let item of storyData"
          class="story-item">
       <div class="story">
       </div>
       <div class="story-title">
-        title {{ i }}
+        {{item.title}}
       </div>
     </div>
   </div>
@@ -39,12 +39,48 @@
 </ng-template>
 
 <ng-template #sidebar>
-  <List>
-    <ListItem *ngFor="let data of sidebarData">
-      <div class="list-item"
-           (click)="onListItemClick(data)">
-        <i class="{{data.icon}} fa-2x"></i>
-      </div>
-    </ListItem>
-  </List>
+  <div class="sidebar-container">
+    <div class="upper-sidebar">
+      <List className="my-list">
+        <Accordion [defaultActiveKey]="'999'">
+          <ng-container *ngFor="let item of menuData; let i = index">
+            <ng-container *ngIf="item?.child?.length; else leafTmpl">
+              <AccordionPanel [key]="i.toString()"
+                              [header]="item.title">
+                <ListItem *ngFor="let content of item?.child"
+                          class="child-list-item text-white"
+                          style="margin-left: 20px"
+                          (click)="navigatePage(content)">
+                  <span class="text-white">
+                    {{ content.title }}
+                  </span>
+                </ListItem>
+              </AccordionPanel>
+            </ng-container>
+            <ng-template #leafTmpl>
+              <div class="leaf-item">
+                <ListItem (click)="navigatePage(item)">
+                  <span class="text-white">
+                    {{ item.title }}
+                  </span>
+                </ListItem>
+              </div>
+            </ng-template>
+          </ng-container>
+        </Accordion>
+
+      </List>
+    </div>
+    <div class="lower-sidebar">
+      <List>
+        <ListItem *ngFor="let item of lowerSidebarData"
+                  (click)="navigatePage(item)">
+          <span class="text-white">
+            {{item.title}}
+          </span>
+        </ListItem>
+      </List>
+    </div>
+  </div>
+
 </ng-template>

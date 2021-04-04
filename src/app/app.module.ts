@@ -14,6 +14,10 @@ import { ClinicalCareDetailComponent } from './clinical-care-detail/clinical-car
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthenticatedGuard } from './authenticated.guard';
+import { HotTopicsComponent } from './hot-topics/hot-topics.component';
+import { DiabetesTeachingToolkitComponent } from './diabetes-teaching-toolkit/diabetes-teaching-toolkit.component';
+import { UnderResourcedCountriesComponent } from './under-resourced-countries/under-resourced-countries.component';
+import { UsefulLinksComponent } from './useful-links/useful-links.component';
 
 registerLocaleData(en);
 
@@ -36,6 +40,22 @@ const routes: Routes = [
   {
     path: '',
     component: LoginPageComponent
+  },
+  {
+    path: 'hot-topics',
+    component: HotTopicsComponent
+  },
+  {
+    path: 'diabetes-teaching-toolkit',
+    component: DiabetesTeachingToolkitComponent
+  },
+  {
+    path: 'under-resourced-countries',
+    component: UnderResourcedCountriesComponent
+  },
+  {
+    path: 'useful-links',
+    component: UsefulLinksComponent
   }
 ]
 
@@ -45,7 +65,11 @@ const routes: Routes = [
     ClinicalCareComponent,
     ClinicalCareDetailComponent,
     LandingPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HotTopicsComponent,
+    DiabetesTeachingToolkitComponent,
+    UnderResourcedCountriesComponent,
+    UsefulLinksComponent
   ],
   imports: [
     BrowserModule,
