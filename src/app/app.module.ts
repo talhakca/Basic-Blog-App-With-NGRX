@@ -19,6 +19,7 @@ import { DiabetesTeachingToolkitComponent } from './diabetes-teaching-toolkit/di
 import { UnderResourcedCountriesComponent } from './under-resourced-countries/under-resourced-countries.component';
 import { UsefulLinksComponent } from './useful-links/useful-links.component';
 import { ELearningComponent } from './e-learning/e-learning.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 registerLocaleData(en);
 
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'e-learning',
     component: ELearningComponent
+  },
+  {
+    path: 'favorites',
+    component: FavoritesComponent
   }
 ]
 
@@ -75,7 +80,8 @@ const routes: Routes = [
     DiabetesTeachingToolkitComponent,
     UnderResourcedCountriesComponent,
     UsefulLinksComponent,
-    ELearningComponent
+    ELearningComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

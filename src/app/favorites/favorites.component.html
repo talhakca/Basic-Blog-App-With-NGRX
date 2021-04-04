@@ -1,0 +1,13 @@
+<div class="card-area">
+    <ng-container *ngFor="let guide of guides">
+        <div class="card"
+             (click)="onGuideSelect(guide)">
+            <div class="card-title">
+                {{guide?.title}}
+            </div>
+            <div class="card-writers">
+                {{ guide?.writers }}
+            </div>
+        </div>
+    </ng-container>
+</div>
