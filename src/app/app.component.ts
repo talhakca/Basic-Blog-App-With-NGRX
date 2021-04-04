@@ -49,21 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     },
     {
       title: 'E-learning',
-      value: 'e-learning',
-      child: [
-        {
-          title: 'Personal Desktop',
-          value: 'personal-desktop'
-        },
-        {
-          title: 'Contents',
-          value: 'contents'
-        },
-        {
-          title: 'Learning Progress',
-          value: 'learning-progress'
-        }
-      ],
+      value: 'e-learning'
     },
     {
       title: 'Webinars & Videos',

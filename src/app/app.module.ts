@@ -18,6 +18,7 @@ import { HotTopicsComponent } from './hot-topics/hot-topics.component';
 import { DiabetesTeachingToolkitComponent } from './diabetes-teaching-toolkit/diabetes-teaching-toolkit.component';
 import { UnderResourcedCountriesComponent } from './under-resourced-countries/under-resourced-countries.component';
 import { UsefulLinksComponent } from './useful-links/useful-links.component';
+import { ELearningComponent } from './e-learning/e-learning.component';
 
 registerLocaleData(en);
 
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'useful-links',
     component: UsefulLinksComponent
+  },
+  {
+    path: 'e-learning',
+    component: ELearningComponent
   }
 ]
 
@@ -69,7 +74,8 @@ const routes: Routes = [
     HotTopicsComponent,
     DiabetesTeachingToolkitComponent,
     UnderResourcedCountriesComponent,
-    UsefulLinksComponent
+    UsefulLinksComponent,
+    ELearningComponent
   ],
   imports: [
     BrowserModule,
