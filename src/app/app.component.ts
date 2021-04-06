@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           value: 'clinical-care'
         },
         {
-          title: 'Diabetes Teaching Toolikt',
+          title: 'Diabetes Teaching Toolkit',
           value: 'diabetes-teaching-toolkit'
         },
         {
