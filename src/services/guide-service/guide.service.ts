@@ -23,9 +23,9 @@ export class GuideService {
     },
     {
       id: '2',
-      title: 'Searchable title',
-      writers: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dignissim nisl et augue dapibus,',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dignissim nisl et augue dapibus, vitae dictum quam consequat. Etiam finibus pellentesque ex ut placerat. Sed molestie leo malesuada, hendrerit leo dignissim, convallis elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec dui leo, iaculis in mollis rhoncus, efficitur vitae justo. Praesent ac nisl sed lorem efficitur malesuada. Aenean et nunc suscipit mauris venenatis ultrices eget nec enim. Curabitur metus velit, consectetur nec lacinia et, faucibus a justo. Aliquam vel blandit magna. In vel ipsum in ex pharetra ultricies ac ut lacus. Duis eget justo molestie, tempus sem suscipit, ultricies ipsum. Integer aliquet dapibus sollicitudin.'
+      title: 'ISPAD Clinical Practice Consensus Guidelines 2018: The delivery of ambulatory diabetes care to children and adolescents with diabetes',
+      writers: 'Catherine Pihoker1 | Gun Forsander2 | Bereket Fantahun3 | Anju Virmani4 | Sarah Corathers5 | Paul Benitez-Aguirre6 | Junfen Fu7 | David M. Maahs8',
+      content: `From the outset, the child or adolescent with diabetes and relevant family members should receive care from a multidisciplinary diabetes team comprised of specialists with training and expertise in both dia- betes and pediatrics, and knowledgeable of child and adolescent development (E). The diabetes care team should emphasize that the family and child are the central members of the care team (E). Clear and consistent communication around education and the treatment plan is essential. The treatment plan should integrate current technol- ogies commensurate with available resources and the individual child's/family's needs. (E) A multidisciplinary team is unlikely to be available in areas of low population density and where childhood dia- betes rarely occurs.`
     }
   ]
 
