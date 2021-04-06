@@ -63,10 +63,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       value: 'favorites'
     },
     {
-      title: 'Settings',
-      value: 'settings'
+      title: 'Contact',
+      value: 'contact'
     }
-  ]
+  ];
+
   menuValue = [];
 
   storyData: any[] = [];
@@ -90,14 +91,22 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.setStoryVisible();
-    this.isFirstOpen = localStorage.getItem('isFirstOpen') !== 'false';
+    this.subscribeAppState();
+  }
+
+  subscribeAppState() {
+    this.titleService.isAppOpenedBefore.subscribe((appState: boolean) => {
+      this.isFirstOpen = !appState;
+    })
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.getStoryData();
       this.getStoryVisible();
-    }, 0)
+      this.titleService.isAppOpenedBefore.next(true);
+    }, 0);
+    console.log('hi');
   }
 
   height: number = document.documentElement.clientHeight;
@@ -120,7 +129,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   getTitle() {
-    return this.titleService.getActiveTitle() || 'ISPAD';
+    return this.titleService.getActiveTitle() || 'HOME';
   }
 
   getStoryData() {
@@ -133,7 +142,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   getStoryVisible() {
     this.storyService.isStoryVisible.subscribe((visibility: boolean) => {
       this.storyVisible = visibility;
-      console.log(visibility);
     });
   }
 

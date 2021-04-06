@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StoryService } from 'src/services/story-service/story.service';
 
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.scss']
 })
-export class SplashComponent implements OnInit {
+export class SplashComponent implements OnInit, AfterViewInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private storyService: StoryService
   ) { }
+
+
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -19,4 +23,9 @@ export class SplashComponent implements OnInit {
     }, 1000)
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.storyService.isStoryVisible.next(true);
+    });
+  }
 }

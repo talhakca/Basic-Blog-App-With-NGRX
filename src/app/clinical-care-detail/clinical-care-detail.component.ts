@@ -19,8 +19,13 @@ export class ClinicalCareDetailComponent implements OnInit {
     private http: HttpClient
   ) { }
 
+  isPageFavorited = false;
+  loadPage = false;
+  favoriteKey: null | string = null;
+
   ngOnInit(): void {
     this.getGuideIdFromUrl();
+    this.getFavorites();
   }
 
   getGuideIdFromUrl() {
@@ -38,7 +43,29 @@ export class ClinicalCareDetailComponent implements OnInit {
     const userId = localStorage.getItem('userId');
     if (userId) {
       const postBody = { userId: userId, favoritedGuideId: this.guideId }
-      this.http.post('https://bau-ispad-default-rtdb.firebaseio.com/favorites.json', postBody).subscribe(res => console.log(res))
+      this.http.post('https://bau-ispad-default-rtdb.firebaseio.com/favorites.json', postBody).subscribe(res => {
+        this.isPageFavorited = true;
+      });
+    }
+  }
+
+  getFavorites() {
+    this.http.get('https://bau-ispad-default-rtdb.firebaseio.com/favorites.json').subscribe((favorites: any) => {
+      for (const key in favorites) {
+        if (favorites[key].userId === localStorage.getItem('userId')) {
+          this.isPageFavorited = true;
+          this.favoriteKey = key;
+        }
+      }
+      this.loadPage = true;
+    });
+  }
+
+  removeFromFavorites() {
+    if (this.favoriteKey) {
+      this.http.delete(`https://bau-ispad-default-rtdb.firebaseio.com/favorites/${this.favoriteKey}.json`).subscribe(res => {
+        this.isPageFavorited = false;
+      });
     }
   }
 

@@ -1,0 +1,25 @@
+<ng-container *ngIf="userVerified; else loginPageTmpl">
+    <div class="container-fluid mt-5">
+        <TextareaItem [(ngModel)]="mail"
+                      [rows]="1"
+                      [placeholder]="'E-mail'"> </TextareaItem>
+        <br>
+        <TextareaItem [(ngModel)]="content"
+                      [rows]="3"
+                      [autoHeight]="true"
+                      placeholder="Suggestion"> </TextareaItem>
+        <br>
+        <div Button
+             [type]="'primary'"
+             (onClick)="submitForm()">Submit Form</div>
+    </div>
+</ng-container>
+
+<ng-template #loginPageTmpl>
+    <div class="go-to-login">
+        Please take the survey in order to send mail.
+    </div>
+    <div Button
+         [type]="'primary'"
+         (onClick)="navigateToLoginPage()">Login Page</div>
+</ng-template>

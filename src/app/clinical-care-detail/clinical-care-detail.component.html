@@ -1,4 +1,5 @@
-<div class="clinical-care-detail-container">
+<div *ngIf="loadPage"
+     class="clinical-care-detail-container">
     <div class="title-area">
         {{ guideline.title}}
     </div>
@@ -29,16 +30,28 @@
                 </div>
             </div>
         </div>
-        <div class="icon-container">
+        <div *ngIf="!isPageFavorited; else removeFavTmpl"
+             class="icon-container"
+             (click)="addToFavorites()">
             <div class="icon">
-                <i class="fas fa-download"></i>
+                <i class="far fa-heart"></i>
             </div>
             <div class="icon">
-                <div class="text"
-                     (click)="addToFavorites()">
+                <div class="text">
                     Add to favorites
                 </div>
             </div>
         </div>
+        <ng-template #removeFavTmpl>
+            <div class="icon-container"
+                 (click)="removeFromFavorites()">
+                <div class="icon">
+                    <i class="fas fa-heart text-warning"></i>
+                </div>
+                <div class="text">
+                    Remove from Favorites
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

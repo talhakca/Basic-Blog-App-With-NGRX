@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocaleProviderService, PickerRef, PickerService, RadioStatus } from 'ng-zorro-antd-mobile';
 import { en_US } from 'ng-zorro-antd-mobile';
+import { TitleService } from 'src/services/title-service/title.service';
 import * as uuid from 'uuid';
 @Component({
   selector: 'app-login-page',
@@ -25,10 +26,12 @@ export class LoginPageComponent implements OnInit {
     levelOfDE?: string,
     specialistType?: string,
     nonSpecialistType?: string,
-    yearsOfExperience?: string,
-    numberOfDiabetePatients?: string
+    yearsOfExperience?: number,
+    numberOfDiabetePatients?: number
   } = {
-      age: 18
+      age: 18,
+      numberOfDiabetePatients: 0,
+      yearsOfExperience: 0
     };
 
   genderData = [
@@ -90,17 +93,21 @@ export class LoginPageComponent implements OnInit {
     'Other'
   ];
 
+  redirectUrl: null | string = null;
+
   constructor(
     private formBuilder: FormBuilder,
     private _picker: PickerService,
     private _localeProviderService: LocaleProviderService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: TitleService
   ) { }
 
   ngOnInit(): void {
     const currentLocale = en_US;
     this._localeProviderService.setLocale(currentLocale);
-
+    this.redirectUrl = this.activatedRoute.snapshot.params['redirectUrl'];
   }
 
   buildForm() {
@@ -117,13 +124,19 @@ export class LoginPageComponent implements OnInit {
   }
 
   onFormSave() {
+    this.setAppState();
     localStorage.setItem('isAuthenticated', 'true');
     const userId = localStorage.getItem('userId');
-    if (userId) {
-      this.router.navigateByUrl('home')
-    } else {
+    if (!userId) {
       localStorage.setItem('userId', uuid.v4());
     }
+    localStorage.setItem('userDataCollected', 'true');
+    if (this.redirectUrl) {
+      this.router.navigateByUrl(this.redirectUrl);
+    } else {
+      this.router.navigateByUrl('home');
+    }
+
   }
 
   genderSelect() {
@@ -212,6 +225,17 @@ export class LoginPageComponent implements OnInit {
   onClose() {
     this.specialistModalVisible = false;
     localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('userId', uuid.v4());
+    localStorage.setItem('userDataCollected', 'false');
+    this.setAppState();
     this.router.navigateByUrl('home')
+  }
+
+  onModalClose() {
+    this.specialistModalVisible = false;
+  }
+
+  setAppState() {
+    this.titleService.isAppOpenedBefore.next(true);
   }
 }

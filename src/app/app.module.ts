@@ -22,6 +22,7 @@ import { ELearningComponent } from './e-learning/e-learning.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SplashComponent } from './splash/splash.component';
 import { SplashGuard } from './splash.guard';
+import { ContactComponent } from './contact/contact.component';
 
 registerLocaleData(en);
 
@@ -79,8 +80,12 @@ const routes: Routes = [
   {
     path: 'splash',
     component: SplashComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   }
-]
+];
 
 @NgModule({
   declarations: [
@@ -95,7 +100,8 @@ const routes: Routes = [
     UsefulLinksComponent,
     ELearningComponent,
     FavoritesComponent,
-    SplashComponent
+    SplashComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
